@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}EmpreGO! - Cadastrar Vaga{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1>Cadastro de empresa</h1><br>
+
+            {% if msg_erro %}  <!-- Exibe mensagem de erro, se houver -->
+                <div class="alert alert-danger" role="alert">
+                    {{ msg_erro }}
+                </div>
+            {% endif %}
+
+<form action="/editar_empresa/{{ empresa.id_empresa }}" method="post">
+    <div class="mb-3">
+    <label for="nome_empresa" class="form-label">Nome da empresa</label>
+    <input type="text" class="form-control" name="nome_empresa" value="{{ empresa.nome_empresa }}" required>
+    </div>
+
+    <div class="mb-3">
+    <label for="cnpj" class="form-label">CNPJ</label>
+    <input type="text" class="form-control" name="cnpj" value="{{ empresa.cnpj }}"  required>
+    </div>
+
+    <div class="mb-3">
+    <label for="telefone" class="form-label">Telefone</label>
+    <input type="text" class="form-control" name="telefone" value="{{ empresa.telefone }}" required>
+    </div>
+
+    <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" name="email"  value="{{ empresa.email }}" required>
+    </div>
+
+    <div class="mb-3">
+    <label for="senha" class="form-label">Senha</label>
+    <input type="text" class="form-control" name="senha" value="{{ empresa.senha }}" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="status" class="form-label">Status</label>
+      <select name="status" class="form-select">
+      <option value="ativa">Ativa</option>
+      <option value="inativa">Inativa</option>
+    </select>
+
+    <br>
+    </div>
+    <div class="d-flex justify-content-center">
+    <button type="submit" class="btn btn-primary">Atualizar</button>
+   </div>
+
+    {% if msg_erro %}
+    <p style="color: red;">{{ msg_erro }}</p>
+    {% endif %}
+
+</form>
+{% endblock %}

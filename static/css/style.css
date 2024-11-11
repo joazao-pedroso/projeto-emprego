@@ -1,0 +1,9 @@
+p span {
+    color: red;
+}
+body {
+    min-height: 100vh;
+}
+.text-primary {
+    color: brown !important;
+}
