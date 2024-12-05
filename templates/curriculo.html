@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}EmpreGO! - Enviar Curriculo{% endblock %}
+
+{% block content %}
+<h1>
+    Enviar Curriculo
+</h1>
+<br>
+
+<form action="/curriculo/{{ vaga.id_vaga }}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+    <div class="mb-3">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" class="form-control" name="nome" required>
+        <div class="invalid-feedback">
+          Insira o seu nome.
+      </div>
+        </div>
+
+            <div class="mb-3">
+                <label for="telefone" class="form-label">Telefone</label>
+                <input type="text" class="form-control" name="telefone" id="telefone" required>
+                <div class="invalid-feedback">
+                  Insira o seu telefone.
+              </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" required>
+                    <div class="invalid-feedback">
+                      Insira o seu email.
+                  </div>
+                    </div>
+                <div class="mb-3">
+                  <div class="mb-3">
+                    <label for="file" class="form-label"></label>
+
+                    <input type="file" name="file" class="form-control" >
+
+                  <div>
+
+                    <br>
+                    <div class="mb-3">
+                      <label for="enviar" class="form-label"></label>
+                      
+                      <button type="submit" name="enviar" class="btn btn-primary " >Enviar curriculo</button>
+  
+                    <div>
+            </div>
+</form>
+<script>
+(() => {
+  'use strict'
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.8/dist/inputmask.min.js"></script>
+
+
+    <script>
+        Inputmask('(99) 99999-9999').mask(document.querySelector('#telefone'))
+    </script>
+{% endblock %}

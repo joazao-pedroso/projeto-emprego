@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}EmpreGO! - Painel da Empresa{% endblock %}
+{% block title %} EmpreGO! - Painel da Empresa {% endblock %}
 
 {% block content %}
 
@@ -27,6 +27,7 @@
                     </p>
                     <a href="/editar_vaga/{{ vaga.id_vaga }}" class="btn btn-primary btn-sm ">Editar</a>
                     <a href="/status_vaga/{{ vaga.id_vaga }}" class="btn btn-warning btn-sm" onclick="return confirm('Tem certeza que deseja inativar esta empresa?')">Inativar</a>
+                    <a href="/ver_curriculos/{{ vaga.id_vaga }}" class="btn btn-secondary btn-sm">Ver curriculos</a>
                   </div>
                 </div>                  
               </div>
@@ -52,6 +53,7 @@
                     <a href="/editar_vaga/{{ vaga.id_vaga }}" class="btn btn-primary btn-sm ">Editar</a>
                     <a href="/status_vaga/{{ vaga.id_vaga }}" class="btn btn-success btn-sm" onclick="return confirm('Tem certeza que deseja ativar esta empresa?')">Ativar</a>
                     <a href="/excluir_vaga/{{ vaga.id_vaga }}" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir esta vaga?')">Excluir</a>
+
                     </div>
                 </div>                  
             </div>

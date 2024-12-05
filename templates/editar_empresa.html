@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 
-{% block title %}EmpreGO! - Cadastrar Vaga{% endblock %}
+{% block title %}EmpreGO! - Editar Empresa{% endblock %}
 
 {% block content %}
 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h1>Cadastro de empresa</h1><br>
+            <h1>Editar Empresa</h1><br>
 
-            {% if msg_erro %}  <!-- Exibe mensagem de erro, se houver -->
+            {% if msg_erro %} 
                 <div class="alert alert-danger" role="alert">
-                    {{ msg_erro }}
+                   <p>{{ msg_erro }}</p>
                 </div>
             {% endif %}
 
@@ -19,27 +19,45 @@
     <div class="mb-3">
     <label for="nome_empresa" class="form-label">Nome da empresa</label>
     <input type="text" class="form-control" name="nome_empresa" value="{{ empresa.nome_empresa }}" required>
+    <div class="invalid-feedback">
+      Insira o nome da Empresa.
+  </div>
     </div>
+
+    
 
     <div class="mb-3">
     <label for="cnpj" class="form-label">CNPJ</label>
-    <input type="text" class="form-control" name="cnpj" value="{{ empresa.cnpj }}"  required>
+    <input type="text" class="form-control" name="cnpj" id="cnpj" value="{{ empresa.cnpj }}" required>
+    <div class="invalid-feedback">
+      Insira o CNPJ da Empresa.
+  </div>
     </div>
 
     <div class="mb-3">
     <label for="telefone" class="form-label">Telefone</label>
-    <input type="text" class="form-control" name="telefone" value="{{ empresa.telefone }}" required>
+    <input type="text" class="form-control" name="telefone" id="telefone" value="{{ empresa.telefone }}" required>
+    <div class="invalid-feedback">
+      Insira o telefone da Empresa.
+  </div>
     </div>
 
     <div class="mb-3">
     <label for="email" class="form-label">Email</label>
-    <input type="email" class="form-control" name="email"  value="{{ empresa.email }}" required>
+    <input type="email" class="form-control" name="email" value="{{ empresa.email }}" required>
+    <div class="invalid-feedback">
+      Insira o email da Empresa.
+  </div>
     </div>
 
     <div class="mb-3">
     <label for="senha" class="form-label">Senha</label>
     <input type="text" class="form-control" name="senha" value="{{ empresa.senha }}" required>
+    <div class="invalid-feedback">
+      Insira a senha da Empresa.
+  </div>
     </div>
+
 
     <div class="mb-3">
       <label for="status" class="form-label">Status</label>
@@ -47,11 +65,10 @@
       <option value="ativa">Ativa</option>
       <option value="inativa">Inativa</option>
     </select>
-
-    <br>
-    </div>
+      </div>
+   
     <div class="d-flex justify-content-center">
-    <button type="submit" class="btn btn-primary">Atualizar</button>
+    <button type="submit" class="btn btn-primary">Editar</button>
    </div>
 
     {% if msg_erro %}
@@ -59,4 +76,33 @@
     {% endif %}
 
 </form>
+
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script>
+<script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.8/dist/inputmask.min.js"></script>
+    <script>
+        Inputmask('99.99.999/9999-99').mask(document.querySelector('#cnpj'))
+        Inputmask('(99) 99999-9999').mask(document.querySelector('#telefone'))
+
+    </script>
 {% endblock %}

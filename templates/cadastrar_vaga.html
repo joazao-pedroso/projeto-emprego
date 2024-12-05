@@ -9,20 +9,20 @@
         <div class="col-md-6">
             <h1>Cadastrar Nova Vaga</h1>
 
-            {% if msg_erro %}  <!-- Exibe mensagem de erro, se houver -->
-                <div class="alert alert-danger" role="alert">
-                    {{ msg_erro }}
-                </div>
-            {% endif %}
-
-            <form action="/cadastrar_vaga" method="post">
+            <form action="/cadastrar_vaga" method="post" class="needs-validation" novalidate>
                 <div class="mb-3">
                     <label for="titulo" class="form-label">Título da Vaga</label>
                     <input type="text" class="form-control" id="titulo" name="titulo" required>
+                    <div class="invalid-feedback">
+                        Insira o título da Vaga.
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="descricao" class="form-label">Descrição da Vaga</label>
                     <textarea class="form-control" id="descricao" name="descricao" rows="5" required></textarea>
+                    <div class="invalid-feedback">
+                        Insira a descrição da Vaga.
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="formato" class="form-label">Formato de Trabalho</label>
@@ -41,11 +41,17 @@
                 </div>
                 <div class="mb-3">
                     <label for="local" class="form-label">Local da Vaga (se aplicável)</label>
-                    <input type="text" class="form-control" id="local" name="local">
+                    <input type="text" class="form-control" id="local" name="local" required>
+                    <div class="invalid-feedback">
+                        Insira o local da Vaga.
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="salario" class="form-label">Salário (opcional)</label>
-                    <input type="text" class="form-control" id="salario" name="salario">
+                    <input type="text" class="form-control" id="salario" name="salario" required>
+                    <div class="invalid-feedback">
+                        Insira o salário da Vaga.
+                    </div>
                 </div>
                 <div class="d-flex justify-content-center">
                     <button type="submit" class="btn btn-primary">Cadastrar Vaga</button>
@@ -54,5 +60,43 @@
         </div>
     </div>
 </div>
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+    'use strict'
+  
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+  
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+  
+        form.classList.add('was-validated')
+      }, false)
+    })
+  })()
+</script>
 
+
+<script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.8/dist/inputmask.min.js"></script>
+
+
+    <script>
+
+        Inputmask("numeric", {
+            radixPoint: ",",
+            groupSeparator: ".",
+            digits: 2,
+            autoGroup: true,
+            rightAlign: false,
+            allowMinus: false,
+            prefix: "R$ "
+        }).mask(document.querySelector('#salario'))
+
+    </script>
 {% endblock %}

@@ -3,12 +3,19 @@
 {% block title %}EmpreGO! - Encontre sua vaga ideal{% endblock %}
 
 {% block content %}
+<h1 class="text-primary">Encontre sua vaga ideal!</h1>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1>Encontre sua vaga ideal!</h1>
-                <p>Explore as vagas mais recentes e dê o próximo passo na sua carreira.</p>
+    <p>Explore as vagas mais recentes e dê o próximo passo na sua carreira.</p>
+    {% if not login %}
+        <form action="/procurar_vagas">
+            <div class="mb-3">
+                <input type="text" class="form-control" name="word" placeholder="Palavra-chave:" required style="width: 35%;">
+            </div>
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
+    {% endif %}
+
+
                 {% if login == 'empresa' %}
                         <a href="/cadastrar_vaga" class="btn btn-success">Cadastrar Vaga</a>
                 {% endif %}
@@ -17,9 +24,11 @@
         <div class="row mt-4">
 
             {% for vaga in vagas %}
+
                 <div class="col-12 col-md-6 col-lg-4">
                     {% include 'card.html' %}
                 </div>
+
             {% endfor %}
 
             {% if not vagas %}

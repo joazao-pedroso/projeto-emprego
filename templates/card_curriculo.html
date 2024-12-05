@@ -1,0 +1,22 @@
+<div class="card mb-4 shadow">
+    <div class="card-body">
+        <h5 class="card-title text-primary">
+            Nome: {{ candidato.nome }}
+        </h5><br>
+        <h6 class="card-subtitle mb-2 text-muted">
+          <strong>Email:</strong>  {{ candidato.email }}
+        </h6>
+        <h6 class="card-subtitle mb-2 text-muted">
+            <strong>Telefone:</strong>  {{ candidato.telefone }}
+        </h6>
+        <h6 class="card-subtitle mb-2 text-muted">
+            <strong>Data Upload:</strong>  {{ candidato.data_upload }}
+        </h6>
+        <br>
+        <a href="/ver/{{ candidato.curriculo }}" class="btn btn-primary">Ver</a>
+        <a href="/download/{{ candidato.curriculo }}" class="btn btn-success">Baixar</a>
+        <a href="/delete/{{ candidato.curriculo }}/{{candidato.id_vaga}}" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir esse arquivo!')">Eliminar</a>
+    </div>
+</div>
+
+

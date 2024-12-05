@@ -17,3 +17,9 @@ def conectar_db():
 def encerrar_db(cursor, conexao):
     cursor.close()
     conexao.close()
+    
+    
+def limpar_input(campo):
+    campolimpo = campo.replace(".", "").replace("/","").replace("-","").replace(" ", "").replace("(","").replace(")", "")
+    
+    return campolimpo

@@ -5,7 +5,7 @@
 {% block content %}
 
 <div class="container">
-    <h1>Painel do Administrador</h1>
+    <h1 class="text-primary">Painel do Administrador</h1>
 
     <h2>Empresas Ativas:</h2>
     <div class="row mt-4">
@@ -41,7 +41,7 @@
                     <h5 class="card-title">{{ empresa.nome_empresa }}</h5>
                     <p class="card-text">
                       <strong>CNPJ:</strong> {{ empresa.cnpj }}<br>
-                      <strong>E-mail:</strong> {{ empresa.email }}<br>
+                      <strong>E-mail:</strong> {{ empresa.email }} <br>
                       <strong>Telefone:</strong> {{ empresa.telefone }}
                     </p>
                     <a href="/editar_empresa/{{ empresa.id_empresa }}" class="btn btn-primary btn-sm me-2">Editar</a>

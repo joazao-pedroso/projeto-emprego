@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}EmpreGO! - Cadastrar Vaga{% endblock %}
+{% block title %}EmpreGO! - Cadastrar Empresa{% endblock %}
 
 {% block content %}
 
@@ -15,31 +15,49 @@
                 </div>
             {% endif %}
 
-<form action="/cadastrar_empresa" method="post">
+<form action="/cadastrar_empresa" method="post" class="needs-validation" novalidate>
     <div class="mb-3">
     <label for="nome_empresa" class="form-label">Nome da empresa</label>
     <input type="text" class="form-control" name="nome_empresa" required>
+    <div class="invalid-feedback">
+      Insira o nome da Empresa.
+  </div>
     </div>
+
+    
 
     <div class="mb-3">
     <label for="cnpj" class="form-label">CNPJ</label>
-    <input type="text" class="form-control" name="cnpj"   required>
+    <input type="text" class="form-control" name="cnpj" id="cnpj" required>
+    <div class="invalid-feedback">
+      Insira o CNPJ da Empresa.
+  </div>
     </div>
 
     <div class="mb-3">
     <label for="telefone" class="form-label">Telefone</label>
-    <input type="text" class="form-control" name="telefone" required>
+    <input type="text" class="form-control" name="telefone" id="telefone" required>
+    <div class="invalid-feedback">
+      Insira o telefone da Empresa.
+  </div>
     </div>
 
     <div class="mb-3">
     <label for="email" class="form-label">Email</label>
     <input type="email" class="form-control" name="email" required>
+    <div class="invalid-feedback">
+      Insira o email da Empresa.
+  </div>
     </div>
 
     <div class="mb-3">
     <label for="senha" class="form-label">Senha</label>
     <input type="text" class="form-control" name="senha" required>
+    <div class="invalid-feedback">
+      Insira a senha da Empresa.
+  </div>
     </div>
+
 
     <div class="mb-3">
       <label for="status" class="form-label">Status</label>
@@ -47,9 +65,8 @@
       <option value="ativa">Ativa</option>
       <option value="inativa">Inativa</option>
     </select>
-
-    <br>
-    </div>
+      </div>
+   
     <div class="d-flex justify-content-center">
     <button type="submit" class="btn btn-primary">Cadastrar</button>
    </div>
@@ -59,4 +76,35 @@
     {% endif %}
 
 </form>
+
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.8/dist/inputmask.min.js"></script>
+
+
+    <script>
+        Inputmask('99.99.999/9999-99').mask(document.querySelector('#cnpj'))
+        Inputmask('(99) 99999-9999').mask(document.querySelector('#telefone'))
+
+    </script>
 {% endblock %}

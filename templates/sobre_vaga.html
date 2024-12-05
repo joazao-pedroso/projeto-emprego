@@ -22,7 +22,7 @@
             {% endif %} 
 
             {% if vaga.salario %}
-                <p><strong>Salário:</strong>  R$ {{ vaga.salario }}</p>
+                <p><strong>Salário:</strong> {{ vaga.salario }}</p>
             {% endif %}
         </div>
         <div class="col-12 col-md-4 mt-4 mt-md-0"> <!-- Barra lateral em telas médias e maiores -->
@@ -34,7 +34,7 @@
 
                     <!-- Aqui você pode adicionar um botão para candidatar-se à vaga,
                          por exemplo, link para um site externo ou um formulário de contato -->
-                    <a href="#" class="btn btn-primary">Candidatar-se</a>
+                    <a href="/curriculo/{{ vaga.id_vaga }}" class="btn btn-primary">Candidatar-se</a>
                 </div>
             </div>
         </div>
@@ -47,3 +47,4 @@
 </div>
 
 {% endblock %}
+
